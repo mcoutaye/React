@@ -1,27 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, Touchable, View } from 'react-native';
-import { SafeAreaView, TextInput, TouchableOpacity } from 'react-native-web';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { TextInput } from 'react-native-web';
 
 export default function App() {
   const [text, onChangeText] = React.useState('Useless Text');
   const [number, onChangeNumber] = React.useState('');
+
+  const handleButtonPress = () => {
+    console.log('bonjour');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Écran1</Text>
-        <View>
+      <View>
         <TextInput
           style={styles.input}
           onChangeText={onChangeNumber}
           value={number}
           placeholder="Ceci est une zone de texte"
-          keyboardType="numeric"
-          />
+        />
       </View>
       <View style={styles.button}>
-      <TouchableOpacity>Bouton</TouchableOpacity>
+        <TouchableOpacity onPress={handleButtonPress}>
+          <Text>Bouton</Text>
+        </TouchableOpacity>
       </View>
-      <StatusBar style="auto"/>
+      <StatusBar style="auto" />
     </View>
   );
 }
